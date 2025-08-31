@@ -81,7 +81,7 @@ $$
 
 
 
-#(RELLENAR POSTERIORMENTE, DEJO EJEMPLO)
+# (RELLENAR POSTERIORMENTE, DEJO EJEMPLO)
 ## Cómo ejecutar
 1. `pip install -r requirements.txt`
 2. `python src/solve.py` → genera `outputs/solution.json` y `outputs/resumen.txt`
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
