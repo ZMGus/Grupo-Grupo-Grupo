@@ -5,21 +5,85 @@ Este proyecto resuelve la localización de plantas (tipo pequeña/grande) y la a
 ## Contexto
 Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posibles plantas en Antofagasta, Valparaíso, Santiago, **Rancagua**, Concepción y Puerto Montt. Tres alternativas de transporte (AT1, AT2, AT3) con costos unitarios por ciudad-región.
 
-## Formulación (resumen)
-**Variables:**  
-- \(x_{c,p}\in\{0,1\}\): abrir planta tipo \(p\in\{\text{Pequeña, Grande}\}\) en ciudad \(c\).  
-- \(y_{c,r,m,t}\ge 0\): flujo desde ciudad \(c\) a región \(r\) por modo \(m\) en año \(t\).
+## Formulación 
 
-**Función objetivo (min):** costos de apertura + fijos (+ multiplicador por 3 años si corresponde) + variables por unidad + transporte.
+## Conjuntos
 
-**Restricciones clave:**
-1. **Demanda por región y año:** \(\sum_{c,m} y_{c,r,m,t}\ge D_{r,t}\).
-2. **Capacidad por ciudad y año:** \(\sum_{r,m} y_{c,r,m,t}\le \sum_{p} P_p\,x_{c,p}\).
-3. **A lo más una planta por ciudad:** \(\sum_p x_{c,p}\le 1\).
+* $I$: ciudades candidatas.
+* $J$: tipos de planta $\{\text{Pequeña, Grande}\}$.
+* $K$: regiones de demanda.
+* $F$: modos de transporte $\{\text{AT1, AT2, AT3}\}$.
+* $T$: años del horizonte $\{1,2,3\}$.
+* $|T|$: número de años del horizonte.
 
-## Supuestos
-Horizonte de 3 años sin inventarios; decisiones de apertura al inicio y vigentes todo el horizonte; flujos continuos; costos variables por ciudad (independientes del tipo); mix de transporte permitido; conectividad completa ciudad-región-modo.
+---
 
+## Función objetivo (minimizar)
+
+$$
+\begin{aligned}
+\min\; z \;=\;&
+\underbrace{\sum_{i\in I}\sum_{j\in J} x_{ij}\,\big(C_{ij}+CF_{ij}\cdot|T|\big)}_{\text{apertura + fijos de todo el horizonte}} \\
+&+\;\underbrace{\sum_{i\in I}\sum_{j\in J} CV_{ij}\left(\sum_{k\in K}\sum_{f\in F}\sum_{t\in T} y_{ikft}\right)}_{\text{costos variables de producción}} \\
+&+\;\underbrace{\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\left(\sum_{t\in T} y_{ikft}\right)}_{\text{costos de transporte}}.
+\end{aligned}
+$$
+
+---
+
+## Parámetros
+
+* $C_{ij}$: costo de **apertura** de una planta tipo $j$ en la ciudad $i$.
+* $CF_{ij}$: costo **fijo anual** de operación de una planta tipo $j$ en $i$.
+* $CT_{ikf}$: costo de **transporte por unidad** desde $i$ a la región $k$ por el modo $f$.
+* $CV_{ij}$: costo **variable de producción por unidad** de una planta tipo $j$ en $i$.
+* $D_{kt}$: **demanda** de la región $k$ en el año $t$.
+* $P_{jt}$: **capacidad anual** de una planta tipo $j$ en el año $t$.
+
+---
+
+## Variables de decisión
+
+* $x_{ij}\in\{0,1\}$: vale 1 si se instala una planta tipo $j$ en la ciudad $i$.
+* $y_{ikft}\ge 0$: unidades enviadas desde la ciudad $i$ a la región $k$ por el modo $f$ en el año $t$.
+
+---
+
+## Restricciones
+
+### 1) Satisfacción de demanda (por región y año)
+
+$$
+\sum_{i\in I}\sum_{f\in F} y_{ikft}\;\ge\; D_{kt}
+\qquad \forall\, k\in K,\; t\in T.
+$$
+
+### 2) Capacidad de producción (por ciudad y año)
+
+$$
+\sum_{k\in K}\sum_{f\in F} y_{ikft}
+\;\le\; \sum_{j\in J} P_{jt}\,x_{ij}
+\qquad \forall\, i\in I,\; t\in T.
+$$
+
+### 3) A lo más una planta por ciudad
+
+$$
+\sum_{j\in J} x_{ij}\;\le\;1
+\qquad \forall\, i\in I.
+$$
+
+### 4) Naturaleza de variables
+
+$$
+x_{ij}\in\{0,1\},\qquad y_{ikft}\ge 0.
+$$
+
+
+
+
+
+#(RELLENAR POSTERIORMENTE, DEJO EJEMPLO)
 ## Cómo ejecutar
 1. `pip install -r requirements.txt`
 2. `python src/solve.py` → genera `outputs/solution.json` y `outputs/resumen.txt`
