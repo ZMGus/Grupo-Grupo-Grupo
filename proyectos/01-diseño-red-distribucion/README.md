@@ -23,8 +23,8 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 $$
 \min\; z \;=\;
 \sum_{i\in I}\sum_{j\in J} x_{ij}\,\big(C_{ij}+CF_{ij}\big)
-+\sum_{i\in I}\sum_{j\in J} CV_{ij}\!\!\left(\sum_{k\in K}\sum_{f\in F}\sum_{t\in T} y_{ikft}\right)
-+\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\!\left(\sum_{t\in T} y_{ikft}\right).
++\sum_{i\in I}\sum_{j\in J} CV_{ij}\left(\sum_{k\in K}\sum_{f\in F}\sum_{t\in T} y_{ikft}\right)
++\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\left(\sum_{t\in T} y_{ikft}\right).
 $$
 
 ---
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
