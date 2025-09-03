@@ -52,8 +52,8 @@ $$
 ### 1) Satisfacción de demanda (por región y año)
 
 $$
-\sum_{i\in I}\sum_{f\in F} y_{ikft}\;\ge\; D_{kt}
-\qquad \forall\, k\in K,\; t\in T.
+\sum_{i\in I}\sum_{f\in F} y_{ikft}\ge D_{kt}
+\qquad \forall\, k,t\in K,T.
 $$
 
 ### 2) Capacidad de producción (por ciudad y año)
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
