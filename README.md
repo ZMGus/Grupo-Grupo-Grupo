@@ -1,5 +1,5 @@
 # Grupo-Grupo-Grupo
-Este repositorio reúne los proyectos del semestre
+Este repositorio reúne los proyectos del semestre asociados al ramo Taller de Programación
 
 
 ## Índice de proyectos
