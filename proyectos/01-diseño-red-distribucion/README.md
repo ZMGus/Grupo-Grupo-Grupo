@@ -59,9 +59,9 @@ $$
 ### 2) Capacidad de producción (por ciudad y año)
 
 $$
-\sum_{k\in K}\sum_{f\in F} y_{ikft}
-\;\le\; \sum_{j\in J} P_{jt}\,x_{ij}
-\qquad \forall\, i\in I,\; t\in T.
+\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} y_{kft}
+\le P_{jt}*x_{ij}
+\forall\t\in T.
 $$
 
 ### 3) A lo más una planta por ciudad
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
