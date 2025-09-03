@@ -1,6 +1,6 @@
 # 01 — Diseño de la Red de Distribución
 
-Este proyecto resuelve la localización de plantas (tipo pequeña/grande) y la asignación de flujos a 6 regiones durante 3 años, minimizando costos de apertura, fijos, variables y de transporte. Se modela en **PuLP** y se visualiza la solución en un **mapa interactivo (Folium)**.
+Este proyecto resuelve la localización de plantas (tipo pequeña/grande) y la asignación de flujos a 6 regiones durante 3 años, minimizando costos de apertura, fijos, variables y de transporte. Se modela en **Gurobipy** y se visualiza la solución en un **mapa interactivo (Folium)**.
 
 ## Contexto
 Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posibles plantas en Antofagasta, Valparaíso, Santiago, **Rancagua**, Concepción y Puerto Montt. Tres alternativas de transporte (AT1, AT2, AT3) con costos unitarios por ciudad-región.
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
