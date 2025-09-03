@@ -53,15 +53,15 @@ $$
 
 $$
 \sum_{i\in I}\sum_{f\in F} y_{ikft}\ge D_{kt}
-\qquad \forall\, k,t\in K,T.
+\qquad \forall k,t\in K,T.
 $$
 
 ### 2) Capacidad de producción (por ciudad y año)
 
 $$
-\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} y_{kft}
+\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} y_{ikft}
 \le P_{jt}*x_{ij}
-\forall\t\in T.
+\forall t \in T.
 $$
 
 ### 3) A lo más una planta por ciudad
@@ -94,6 +94,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
