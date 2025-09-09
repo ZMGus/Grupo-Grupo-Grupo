@@ -45,7 +45,7 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 * $x_{ij}\in\{0,1\}$ $(i\in I^{\text{new}},\, j\in J)$: 1 si se abre una planta tipo $j$ en $i$.
 * $z_f\in\{0,1\}$ $(f\in F)$: 1 si se **elige** el modo de transporte $f$ (único para todo el sistema).
 * $y_{ikf}\in\mathbb{Z}_{\ge0}$ $(i\in I,\,k\in K,\,f\in F)$: flujo $i\to k$ por $f$ **acumulado en 3 años**.
-* \$\text{prod}*i \in \mathbb{R}*{\ge 0}\$ \$(i\in I)\$: producción total de la ciudad \$i\$ **acumulada en 3 años**.
+* $\mathrm{prod}_i \ge 0$\ $(i\in I)$: producción total de la ciudad $i$ **acumulada en 3 años**.
 
 ---
 
@@ -181,6 +181,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
