@@ -48,19 +48,58 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 * \$\text{prod}*i \in \mathbb{R}*{\ge 0}\$ \$(i\in I)\$: producción total de la ciudad \$i\$ **acumulada en 3 años**.
 
 ---
-## Función objetivo (minimizar)
+
+
+### Función objetivo (término por término)
+
+**Costos de apertura (solo nuevas plantas)**
+
+$$
+\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} C_{ij}\,x_{ij}
+$$
+
+**Costos fijos anuales (para 3 años)**
+
+$$
+3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
+\;+\; CF_{\text{Rancagua},\,\text{Pequeña}}\right)
+$$
+
+**Costos variables — planta existente en Rancagua**
+
+$$
+CV_{\text{Rancagua},\,\text{Pequeña}}\;\mathrm{prod}_{\text{Rancagua}}
+$$
+
+**Costos variables — ciudades nuevas (activadas por $x$)**
+
+$$
+\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CV_{ij}\;\mathrm{prod}_{i}\;x_{ij}
+$$
+
+**Costos de transporte (flujo acumulado 3 años)**
+
+$$
+\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\; y_{ikf}
+$$
+
+---
+
+### Función objetivo completa
 
 $$
 \begin{aligned}
-\min z =&
-\underbrace{\sum_{i\in I^{\text{new}}}\sum_{j\in J} C_{ij}\,x_{ij}}_{\text{aperturas}}
-+
-\underbrace{3\left(\sum_{i\in I^{\text{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
-+ CF_{\text{Rancagua}\,\text{Pequeña}}\right)}_{\text{costos fijos 3 años}}
-&+
-\underbrace{CV_{\text{Rancagua}\,\text{Pequeña}}\text{prod}_{\text{Rancagua}}+\sum_{i\in I^{\text{new}}}\sum_{j\in J} CV_{ij}\text{prod}_{i}x_{ij}}_{\text{costos variables}}
-&+
-\underbrace{\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf} y_{ikf}}_{\text{costos de transporte}} .
+\min\; z \;=\;&
+\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} C_{ij}\,x_{ij}
+\\[2pt]
+&+\;3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
++ CF_{\text{Rancagua},\,\text{Pequeña}}\right)
+\\[2pt]
+&+\;CV_{\text{Rancagua},\,\text{Pequeña}}\;\mathrm{prod}_{\text{Rancagua}}
+\\[2pt]
+&+\;\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CV_{ij}\;\mathrm{prod}_{i}\;x_{ij}
+\\[2pt]
+&+\;\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\; y_{ikf}\,.
 \end{aligned}
 $$
 
@@ -143,6 +182,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
