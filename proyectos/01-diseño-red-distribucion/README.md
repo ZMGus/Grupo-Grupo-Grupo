@@ -108,61 +108,62 @@ $$
 **1) Demanda acumulada (3 años)**
 
 $$
-\sum_{i\in I}\sum_{f\in F} y_{ikf} \;\ge\; \bar D_k
-\qquad \forall\, k\in K.
+\sum_{i\in I}\sum_{f\in F} y_{ikf} \ge \bar D_k
 $$
+
+para todo $k\in K$.
 
 **2) Capacidad acumulada por ciudad (3 años)**
 *Rancagua (planta existente Pequeña):*
 
 $$
-\mathrm{prod}_{\text{Rancagua}} \;\le\; 3\,P_{\text{Pequeña}}.
+\mathrm{prod}_{\text{Rancagua}} \le 3\,P_{\text{Pequeña}}
 $$
 
 *Ciudades nuevas:*
 
 $$
-\mathrm{prod}_{i} \;\le\; 3\sum_{j\in J} P_{j}\,x_{ij}
-\qquad \forall\, i\in I^{\mathrm{new}}.
+\mathrm{prod}_{i} \le 3\sum_{j\in J} P_j\,x_{ij}
 $$
+
+para todo $i\in I^{\mathrm{new}}$.
 
 **3) Balance producción–despachos por ciudad**
 
 $$
-\mathrm{prod}_{i} \;=\; \sum_{k\in K}\sum_{f\in F} y_{ikf}
-\qquad \forall\, i\in I.
+\mathrm{prod}_{i} = \sum_{k\in K}\sum_{f\in F} y_{ikf}
 $$
+
+para todo $i\in I$.
 
 **4) A lo más una planta por ciudad nueva**
 
 $$
-\sum_{j\in J} x_{ij} \;\le\; 1
-\qquad \forall\, i\in I^{\mathrm{new}}.
+\sum_{j\in J} x_{ij} \le 1
 $$
+
+para todo $i\in I^{\mathrm{new}}$.
 
 **5) Elección única del modo de transporte**
 
 $$
-\sum_{f\in F} z_f \;=\; 1.
+\sum_{f\in F} z_f = 1
 $$
 
 **6) Activación de flujos por modo (Big-M)**
 
 $$
-y_{ikf} \;\le\; M\,z_f
-\qquad \forall\, i\in I,\; \forall\, k\in K,\; \forall\, f\in F.
+y_{ikf} \le M\,z_f
 $$
+
+para todo $i\in I$, $k\in K$, $f\in F$.
 
 **7) Naturaleza de variables**
 
 $$
-x_{ij}\in\{0,1\},\quad z_f\in\{0,1\},\quad
-y_{ikf}\in\mathbb{Z}_{\ge 0},\quad \mathrm{prod}_i\in\mathbb{R}_{\ge 0}.
+x_{ij}\in\{0,1\},\ z_f\in\{0,1\},\ y_{ikf}\in\mathbb{Z}_{\ge 0},\ \mathrm{prod}_i\in\mathbb{R}_{\ge 0}.
 $$
 
-
-
----
 
 
 
@@ -180,6 +181,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
