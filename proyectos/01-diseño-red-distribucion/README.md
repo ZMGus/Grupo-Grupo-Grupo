@@ -178,7 +178,8 @@ $$
 - **mapa.png:** visualización (marcadores de plantas y líneas).
 
 ## Video del caso
-- **[02- Video Grupo grupo](https://youtu.be/RvC9UOkS-ek)
+- [02- Video Grupo grupo](https://youtu.be/RvC9UOkS-ek)
+
 
 
 
