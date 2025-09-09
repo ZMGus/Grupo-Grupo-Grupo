@@ -49,11 +49,6 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 
 ---
 
-
-Perfecto — aquí va **sin `\;`** y en líneas separadas.
-
----
-
 ### Función objetivo (término por término)
 
 **Costos de apertura (solo nuevas plantas)**
@@ -65,9 +60,9 @@ $$
 **Costos fijos anuales (para 3 años)**
 
 $$
-3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
-+ CF_{\text{Rancagua},\,\text{Pequeña}}\right)
+3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij} x_{ij} + CF_{\text{Rancagua},\text{Pequeña}}\right)
 $$
+
 
 **Costos variables — planta existente en Rancagua**
 
@@ -94,19 +89,17 @@ $$
 $$
 \begin{aligned}
 \min z ={}&
-\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} C_{ij}\,x_{ij}
+\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} C_{ij} x_{ij}
 \\
-&+ 3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
-+ CF_{\text{Rancagua},\,\text{Pequeña}}\right)
+&+ 3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij} x_{ij} + CF_{\text{Rancagua},\text{Pequeña}}\right)
 \\
-&+ CV_{\text{Rancagua},\,\text{Pequeña}}\,\mathrm{prod}_{\text{Rancagua}}
+&+ CV_{\text{Rancagua},\text{Pequeña}}\,\mathrm{prod}_{\text{Rancagua}}
 \\
 &+ \sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CV_{ij}\,\mathrm{prod}_{i}\,x_{ij}
 \\
-&+ \sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\, y_{ikf}\,.
+&+ \sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\, y_{ikf}.
 \end{aligned}
 $$
-
 
 ---
 
@@ -187,6 +180,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
