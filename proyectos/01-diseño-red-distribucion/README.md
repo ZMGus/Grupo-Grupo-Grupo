@@ -177,8 +177,9 @@ $$
 - **resumen:** costos totales y chequeos de demanda/capacidad. (No es un archivo simplemente se ve en el mismo codigo)
 - **mapa.png:** visualización (marcadores de plantas y líneas).
 
-## Video
-En `reports/video.md` está el enlace al video explicativo (5–7 min).
+## Video del caso
+- **[02- Video Grupo grupo](https://youtu.be/RvC9UOkS-ek)
+
 
 
 
