@@ -62,7 +62,7 @@ $$
 
 $$
 3\left(\sum_{i\in I^{\mathrm{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
-\;+\; CF_{\text{Rancagua},\,\text{Pequeña}}\right)
++ CF_{\text{Rancagua},\,\text{Pequeña}}\right)
 $$
 
 **Costos variables — planta existente en Rancagua**
@@ -182,6 +182,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
