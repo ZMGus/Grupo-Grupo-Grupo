@@ -7,76 +7,124 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 
 ## Formulación 
 
+---
+
 ## Conjuntos
 
-* $I$: ciudades candidatas.
-* $J$: tipos de planta $\{\text{Pequeña, Grande}\}$.
-* $K$: regiones de demanda.
-* $F$: modos de transporte $\{\text{AT1, AT2, AT3}\}$.
-* $T$: años del horizonte $\{1,2,3\}$.
-* $|T|$: número de años del horizonte.
+* $I$: ciudades que pueden **producir y despachar**
+  $I=\{\text{Antofagasta, Valparaíso, Santiago, Rancagua, Concepción, Puerto Montt}\}$
+* $I^{\text{new}}\subset I$: **ciudades nuevas** candidatas a apertura
+  $I^{\text{new}}=\{\text{Antofagasta, Valparaíso, Santiago, Concepción, Puerto Montt}\}$
+* $J$: tipos de planta $\{\text{Pequeña, Grande}\}$
+* $K$: regiones de demanda $\{\text{R1,\dots,R6}\}$
+* $F$: modos de transporte $\{\text{AT1, AT2, AT3}\}$
+* $T$: años del horizonte $\{1,2,3\}$
+
+---
+
+## Parámetros
+
+* $C_{ij}$: costo de **apertura** de planta tipo $j$ en ciudad $i$ (solo $i\in I^{\text{new}}$).
+* $CF_{ij}$: costo **fijo anual** de planta tipo $j$ en $i$.
+* $CV_{ij}$: costo **variable por unidad** de planta tipo $j$ en $i$.
+* $CT_{ikf}$: costo **unitario de transporte** desde $i$ a región $k$ por modo $f$.
+* $P_{j}$: **capacidad anual** de una planta tipo $j$.
+* $D_{kt}$: demanda de la región $k$ en el año $t$.
+* $M$: constante “Big-M” suficientemente grande.
+
+> **Planta existente:** en **Rancagua** hay una planta **Pequeña** instalada (costo de apertura $=0$), con costos $CF_{\text{Ran},\text{Peq}}$, $CV_{\text{Ran},\text{Peq}}$ y capacidad anual $P_{\text{Pequeña}}$.
+
+---
+
+## Variables de decisión
+
+* $x_{ij}\in\{0,1\}$ $(i\in I^{\text{new}},\, j\in J)$: 1 si se abre una planta tipo $j$ en $i$.
+* $z_f\in\{0,1\}$ $(f\in F)$: 1 si se **elige** el modo de transporte $f$ (único para todo el sistema).
+* $y_{ikf}\in\mathbb{Z}_{\ge0}$ $(i\in I,\,k\in K,\,f\in F)$: flujo $i\to k$ por $f$ **acumulado en 3 años**.
+* $\text{prod}_i\in\mathbb{R}_{\ge0}$ $(i\in I)$: producción total de la ciudad $i$ **acumulada en 3 años**.
 
 ---
 
 ## Función objetivo (minimizar)
 
 $$
-\min\; z \;=\;
-\sum_{i\in I}\sum_{j\in J} x_{ij}\,\big(C_{ij}+CF_{ij}\big)
-+\sum_{i\in I}\sum_{j\in J} CV_{ij}\left(\sum_{k\in K}\sum_{f\in F}\sum_{t\in T} y_{ikft}\right)
-+\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\left(\sum_{t\in T} y_{ikft}\right)
+\begin{aligned}
+\min\; z \;=\;&
+\underbrace{\sum_{i\in I^{\text{new}}}\sum_{j\in J} C_{ij}\,x_{ij}}_{\text{aperturas}}
+\;+\;
+\underbrace{3\!\left(\sum_{i\in I^{\text{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
+\;+\; CF_{\text{Rancagua},\,\text{Pequeña}}\right)}_{\text{costos fijos 3 años}}
+\\[3pt]
+&+\;
+\underbrace{CV_{\text{Rancagua},\,\text{Pequeña}}\;\text{prod}_{\text{Rancagua}}
+\;+\;\sum_{i\in I^{\text{new}}}\sum_{j\in J} CV_{ij}\;\text{prod}_{i}\;x_{ij}}_{\text{costos variables}}
+\\[3pt]
+&+\;
+\underbrace{\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\; y_{ikf}}_{\text{costos de transporte}} \;.
+\end{aligned}
 $$
-
----
-
-## Parámetros
-
-* $C_{ij}$: costo de **apertura** de una planta tipo $j$ en la ciudad $i$.
-* $CF_{ij}$: costo **fijo anual** de operación de una planta tipo $j$ en $i$.
-* $CT_{ikf}$: costo de **transporte por unidad** desde $i$ a la región $k$ por el modo $f$.
-* $CV_{ij}$: costo **variable de producción por unidad** de una planta tipo $j$ en $i$.
-* $D_{kt}$: **demanda** de la región $k$ en el año $t$.
-* $P_{jt}$: **capacidad anual** de una planta tipo $j$ en el año $t$.
-
----
-
-## Variables de decisión
-
-* $x_{ij}\in\{0,1\}$: vale 1 si se instala una planta tipo $j$ en la ciudad $i$.
-* $y_{ikft}\ge 0$: unidades enviadas desde la ciudad $i$ a la región $k$ por el modo $f$ en el año $t$.
 
 ---
 
 ## Restricciones
 
-### 1) Satisfacción de demanda (por región y año)
+### 1) Satisfacción de la demanda (acumulada 3 años)
 
 $$
-\sum_{i\in I}\sum_{f\in F} y_{ikft}\ge D_{kt}
-\qquad \forall k,t\in K,T.
+\sum_{i\in I}\sum_{f\in F} y_{ikf} \;\ge\; \bar D_k
+\qquad \forall\, k\in K.
 $$
 
-### 2) Capacidad de producción (por ciudad y año)
+### 2) Capacidad acumulada por ciudad (3 años)
+
+**Rancagua (planta existente Pequeña):**
 
 $$
-\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} y_{ikft}
-\le P_{jt}*x_{ij}
-\forall t \in T.
+\text{prod}_{\text{Rancagua}} \;\le\; 3\,P_{\text{Pequeña}} .
 $$
 
-### 3) A lo más una planta por ciudad
+**Ciudades nuevas:**
+
+$$
+\text{prod}_{i} \;\le\; 3\sum_{j\in J} P_{j}\,x_{ij}
+\qquad \forall\, i\in I^{\text{new}} .
+$$
+
+### 3) Balance producción–despachos por ciudad
+
+$$
+\text{prod}_{i} \;=\; \sum_{k\in K}\sum_{f\in F} y_{ikf}
+\qquad \forall\, i\in I .
+$$
+
+### 4) A lo más una planta por ciudad nueva
 
 $$
 \sum_{j\in J} x_{ij}\;\le\;1
-\qquad \forall\, i\in I.
+\qquad \forall\, i\in I^{\text{new}} .
 $$
 
-### 4) Naturaleza de variables
+### 5) Elección única del modo de transporte
 
 $$
-x_{ij}\in\{0,1\},\qquad y_{ikft}\ge 0.
+\sum_{f\in F} z_f \;=\; 1 .
 $$
 
+### 6) Activación de flujos por modo (Big-M)
+
+$$
+y_{ikf} \;\le\; M\,z_f
+\qquad \forall\, i\in I,\; k\in K,\; f\in F .
+$$
+
+### 7) Naturaleza de variables
+
+$$
+x_{ij}\in\{0,1\},\quad z_f\in\{0,1\},\quad
+y_{ikf}\in\mathbb{Z}_{\ge 0},\quad \text{prod}_i\ge 0 .
+$$
+
+---
 
 
 
@@ -94,6 +142,7 @@ $$
 
 ## Video
 En `reports/video.md` está el enlace al video explicativo (5–7 min).
+
 
 
 
