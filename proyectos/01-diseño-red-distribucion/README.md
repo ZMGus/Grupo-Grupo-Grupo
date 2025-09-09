@@ -12,15 +12,15 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 ## Conjuntos
 
 * $I$: ciudades que pueden **producir y despachar**.
-  $I=\{\text{Antofagasta},\,\text{Valparaíso},\,\text{Santiago},\,\text{Rancagua},\,\text{Concepción},\,\text{Puerto Montt}\}$
+  $I=\{\text{Antofagasta}\,\text{Valparaíso}\,\text{Santiago}\,\text{Rancagua}\,\text{Concepción}\,\text{Puerto Montt}\}$
 * $I^{\mathrm{new}}\subset I$: **ciudades nuevas** candidatas a apertura.
-  $I^{\mathrm{new}}=\{\text{Antofagasta},\,\text{Valparaíso},\,\text{Santiago},\,\text{Concepción},\,\text{Puerto Montt}\}$
+  $I^{\mathrm{new}}=\{\text{Antofagasta}\,\text{Valparaíso}\,\text{Santiago}\,\text{Concepción}\,\text{Puerto Montt}\}$
 * $J$: tipos de planta.
-  $J=\{\text{Pequeña},\,\text{Grande}\}$
+  $J=\{\text{Pequeña}\,\text{Grande}\}$
 * $K$: regiones de demanda.
-  $K=\{\mathrm{R1},\,\ldots,\,\mathrm{R6}\}$
+  $K=\{\mathrm{R1}\,\ldots\,\mathrm{R6}\}$
 * $F$: modos de transporte.
-  $F=\{\mathrm{AT1},\,\mathrm{AT2},\,\mathrm{AT3}\}$
+  $F=\{\mathrm{AT1}\,\mathrm{AT2}\,\mathrm{AT3}\}$
 * $T$: años del horizonte.
   $T=\{1,2,3\}$
 
@@ -41,28 +41,26 @@ Funnys Company enfrenta un aumento de demanda y debe rediseñar su red con posib
 ---
 
 ## Variables de decisión
-- \(x_{ij}\in\{0,1\}\) \((i\in I^{\mathrm{new}},\, j\in J)\): 1 si se abre planta tipo \(j\) en \(i\).
-- \(z_f\in\{0,1\}\) \((f\in F)\): 1 si se **elige** el modo de transporte \(f\) (único para todo el sistema).
-- \(y_{ikf}\in\mathbb{Z}_{\ge 0}\) \((i\in I,\,k\in K,\,f\in F)\): flujo \(i\!\to\!k\) por \(f\) **acumulado en 3 años**.
-- \(\mathrm{prod}_i\in\mathbb{R}_{\ge 0}\) \((i\in I)\): producción total de la ciudad \(i\) **acumulada en 3 años**.
 
+* $x_{ij}\in\{0,1\}$ $(i\in I^{\text{new}},\, j\in J)$: 1 si se abre una planta tipo $j$ en $i$.
+* $z_f\in\{0,1\}$ $(f\in F)$: 1 si se **elige** el modo de transporte $f$ (único para todo el sistema).
+* $y_{ikf}\in\mathbb{Z}_{\ge0}$ $(i\in I,\,k\in K,\,f\in F)$: flujo $i\to k$ por $f$ **acumulado en 3 años**.
+* \$\text{prod}*i \in \mathbb{R}*{\ge 0}\$ \$(i\in I)\$: producción total de la ciudad \$i\$ **acumulada en 3 años**.
 
+---
 ## Función objetivo (minimizar)
 
 $$
 \begin{aligned}
-\min\; z \;=\;&
+\min z =&
 \underbrace{\sum_{i\in I^{\text{new}}}\sum_{j\in J} C_{ij}\,x_{ij}}_{\text{aperturas}}
-\;+\;
-\underbrace{3\!\left(\sum_{i\in I^{\text{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
-\;+\; CF_{\text{Rancagua},\,\text{Pequeña}}\right)}_{\text{costos fijos 3 años}}
-\\[3pt]
-&+\;
-\underbrace{CV_{\text{Rancagua},\,\text{Pequeña}}\;\text{prod}_{\text{Rancagua}}
-\;+\;\sum_{i\in I^{\text{new}}}\sum_{j\in J} CV_{ij}\;\text{prod}_{i}\;x_{ij}}_{\text{costos variables}}
-\\[3pt]
-&+\;
-\underbrace{\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf}\; y_{ikf}}_{\text{costos de transporte}} \;.
++
+\underbrace{3\left(\sum_{i\in I^{\text{new}}}\sum_{j\in J} CF_{ij}\,x_{ij}
++ CF_{\text{Rancagua}\,\text{Pequeña}}\right)}_{\text{costos fijos 3 años}}
+&+
+\underbrace{CV_{\text{Rancagua}\,\text{Pequeña}}\text{prod}_{\text{Rancagua}}+\sum_{i\in I^{\text{new}}}\sum_{j\in J} CV_{ij}\text{prod}_{i}x_{ij}}_{\text{costos variables}}
+&+
+\underbrace{\sum_{i\in I}\sum_{k\in K}\sum_{f\in F} CT_{ikf} y_{ikf}}_{\text{costos de transporte}} .
 \end{aligned}
 $$
 
