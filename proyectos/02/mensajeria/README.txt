@@ -1,13 +1,21 @@
-Primeramente correr en la terminal dentro de esta carpeta lo siguiente para utilizar ActiveMQ y MailHog:
+Instrucciones de ejecución
+1. Iniciar servicios con Docker
+
+Dentro de esta carpeta, abre una terminal y ejecuta el siguiente comando para levantar los servicios de ActiveMQ y MailHog:
+
 docker compose up -d
 
-luego debemos correr el programa en Python que será el encargado de escuchar las señales de Unity:
+2. Ejecutar el consumidor de correos en Python
+
+Luego, corre el programa que se encargará de escuchar las señales enviadas desde Unity:
+
 python email_consumer.py
 
-Por último corremos el proyecto en Unity e intentamos salir de la casa o tocar las paredes y se enviará un "correo" MailHog el cual se puede ver en http://localhost:8025
+3. Ejecutar el proyecto en Unity
 
-(Para mover el círculo blanco se utiliza WASD)
+Finalmente, abre y ejecuta el proyecto en Unity.
+Al intentar salir de la casa o tocar las paredes, se enviará un “correo” a MailHog, el cual puedes visualizar ingresando a:
 
-Requisitos:
-Tener docker instalado
-Python y librería STOMP
+http://localhost:8025
+
+Para mover el círculo blanco dentro del juego utiliza las teclas W, A, S y D.
