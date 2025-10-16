@@ -1,0 +1,19 @@
+services:
+  activemq:
+    image: apache/activemq-classic:5.18.3
+    container_name: activemq
+    ports:
+      - "61613:61613"   # STOMP
+      - "8161:8161"     # Consola web ActiveMQ
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "8025:8025"   # Interfaz web de correos
+      - "1025:1025"   # Puerto SMTP (sin login)
+    restart: unless-stopped
