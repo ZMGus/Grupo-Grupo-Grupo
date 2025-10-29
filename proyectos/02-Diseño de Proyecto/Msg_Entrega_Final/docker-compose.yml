@@ -1,0 +1,22 @@
+services:
+  activemq_a:
+    image: apache/activemq-classic:5.18.3
+    container_name: activemq_a
+    ports:
+      - "61613:61613"   # STOMP A
+      - "8161:8161"     # Consola A
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  activemq_b:
+    image: apache/activemq-classic:5.18.3
+    container_name: activemq_b
+    ports:
+      - "61614:61613"   # STOMP B (mapeado a 61614 fuera)
+      - "8162:8161"     # Consola B (mapeado a 8162 fuera)
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=admin
+    restart: unless-stopped
