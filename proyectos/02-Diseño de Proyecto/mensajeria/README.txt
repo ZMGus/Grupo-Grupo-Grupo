@@ -1,3 +1,5 @@
+Carpeta con vercion anterior, para la vercion actual ir a carpeta, Msg_Entrega_Final
+
 Instrucciones de ejecución
 1. Iniciar servicios con Docker
 
@@ -17,5 +19,6 @@ Finalmente, abre y ejecuta el proyecto en Unity.
 Al intentar salir de la casa o tocar las paredes, se enviará un “correo” a MailHog, el cual puedes visualizar ingresando a:
 
 http://localhost:8025
+
 
 Para mover el círculo blanco dentro del juego utiliza las teclas W, A, S y D.
