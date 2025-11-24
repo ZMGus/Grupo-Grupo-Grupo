@@ -1,0 +1,1 @@
+Para correr el archivo RandForest_FemboyDetecto.ipynb simplemente ejecutar todas las celdas 
